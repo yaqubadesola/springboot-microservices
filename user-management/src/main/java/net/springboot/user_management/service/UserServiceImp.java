@@ -3,6 +3,7 @@ package net.springboot.user_management.service;
 import lombok.AllArgsConstructor;
 import net.springboot.user_management.dto.UserDto;
 import net.springboot.user_management.entity.User;
+import net.springboot.user_management.exception.EmailAlreadyExistsException;
 import net.springboot.user_management.exception.ResourceNotFoundException;
 import net.springboot.user_management.mapper.AutoUserMapper;
 import net.springboot.user_management.mapper.UserMapper;
@@ -25,7 +26,10 @@ public class UserServiceImp implements UserService{
     public UserDto createUser(UserDto userDto) {
         //before saving map userDto to user entity
         //User newUser = UserMapper.mapToUser(userDto);
-
+        Optional<User> optionalUser = userRepository.findByEmail(userDto.getEmail());
+        if(optionalUser.isPresent()){
+            throw new EmailAlreadyExistsException(userDto.getEmail());
+        }
         User newUser = AutoUserMapper.MAPPER.mapToUser(userDto);
         User savedUser = userRepository.save(newUser);
 

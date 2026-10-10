@@ -3,13 +3,17 @@ package net.springboot.user_management.controller;
 import lombok.AllArgsConstructor;
 import net.springboot.user_management.dto.UserDto;
 import net.springboot.user_management.entity.User;
+import net.springboot.user_management.exception.ErrorDetails;
+import net.springboot.user_management.exception.ResourceNotFoundException;
 import net.springboot.user_management.mapper.UserMapper;
 import net.springboot.user_management.service.UserService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,4 +69,6 @@ public class UserController {
 
         return new ResponseEntity<>("User successfully deleted", HttpStatus.OK);
     }
+
+
 }

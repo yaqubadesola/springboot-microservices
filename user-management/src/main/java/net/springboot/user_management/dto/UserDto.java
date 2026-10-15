@@ -1,5 +1,7 @@
 package net.springboot.user_management.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +13,16 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserDto {
     private Long id;
+
+    @NotBlank(message = "First name is required")
     private String firstName;
+
+
+    @NotBlank(message = "Last name is required")
     private String lastName;
+
+
+    @NotBlank(message = "Email cannot be blank")
+    @Email(message = "Email must be correctly formed")
     private String email;
 }

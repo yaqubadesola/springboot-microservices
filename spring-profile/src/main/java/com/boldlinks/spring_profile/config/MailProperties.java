@@ -17,9 +17,9 @@ public record MailProperties(
         @NotBlank(message = "Mail server URL is required")
         String mailServerUrl,
 
-//        @NotBlank(message = "Support email is required")
-//        @Email(message = "Support email must be valid")
-        String supportEmail,//I commented the above validation in order to control it in my endpoint retrun validation invalid
+        @NotBlank(message = "Support email is required")
+        @Email(message = "Support email must be valid")
+        String supportEmail,
 
         @NotNull(message = "Send real emails flag is required")
         Boolean sendRealEmails,

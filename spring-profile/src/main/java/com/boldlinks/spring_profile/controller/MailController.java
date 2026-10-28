@@ -41,14 +41,23 @@ public class MailController {
 
     @GetMapping("/profile-info")
     public ProfileInfoResponse getProfileInfo() {
+
+        String[] activeProfiles = environment.getActiveProfiles();
+
+        String primaryProfile = activeProfiles.length > 0
+                ? activeProfiles[0]
+                : "default";
+
         return new ProfileInfoResponse(
-                Arrays.asList(environment.getActiveProfiles()),
-                Arrays.asList(environment.getActiveProfiles()).get(0),
+                Arrays.asList(activeProfiles),
+                primaryProfile,
                 mailProperties.environmentName(),
                 mailProperties.sendRealEmails(),
-                Arrays.asList(environment.getActiveProfiles()).size()
+                activeProfiles.length
         );
     }
+
+
     @GetMapping("/config")
     public MailProperties config(){
         return mailProperties;
@@ -62,20 +71,23 @@ public class MailController {
 
     @GetMapping("/validate-config")
     public ConfigurationValidationResponse validateConfig() {
+
         String mailServerUrl = mailProperties.mailServerUrl();
         String supportEmail = mailProperties.supportEmail();
         String subject = mailProperties.welcomeSubject();
-        if(mailServerUrl.isBlank() || supportEmail.isBlank() || subject.isBlank()){
-            return new ConfigurationValidationResponse(
-                    mailProperties.environmentName(),
-                    false,
-                    "Mail configuration is Invalid"
-            );
-        }
+
+        boolean valid =
+                mailServerUrl != null && !mailServerUrl.isBlank()
+                        && supportEmail != null
+                        && supportEmail.matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")
+                        && subject != null && !subject.isBlank();
+
         return new ConfigurationValidationResponse(
                 mailProperties.environmentName(),
-                false,
-                "Mail configuration is Invalid"
+                valid,
+                valid
+                        ? "Mail configuration is valid"
+                        : "Mail configuration is invalid"
         );
     }
 }

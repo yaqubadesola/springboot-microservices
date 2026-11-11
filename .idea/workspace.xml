@@ -5,32 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5325305c-eefb-4e36-b689-5e76c85c4e84" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ems/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ems/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ems/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ems/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ems/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ems/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ems/src/main/java/com/backend/ems/EmsApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ems/src/main/java/com/backend/ems/controller/EmployeeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ems/src/main/java/com/backend/ems/dto/EmployeeDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ems/src/main/java/com/backend/ems/entity/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ems/src/main/java/com/backend/ems/exception/EmailAlreadyExistsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ems/src/main/java/com/backend/ems/exception/ErrorDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ems/src/main/java/com/backend/ems/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ems/src/main/java/com/backend/ems/exception/ResourceNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ems/src/main/java/com/backend/ems/mapper/EmployeeMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ems/src/main/java/com/backend/ems/repository/EmployeeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ems/src/main/java/com/backend/ems/service/EmployeeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ems/src/main/java/com/backend/ems/service/EmployeeServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ems/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ems/src/test/java/com/backend/ems/EmsApplicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +30,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Merging master",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/user/Documents/work_folder/springboot-microservices"
   }

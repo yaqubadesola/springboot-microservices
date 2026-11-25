@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class UserServiceImp implements UserService{
 
-    private UserRepository userRepository;
+    private UserRep ository userRepository;
     @Override
     public UserDto createUser(UserDto userDto) {
         //before saving map userDto to user entity

@@ -1,4 +1,4 @@
-package net.springboot.user_management.exception;
+package com.service.department.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

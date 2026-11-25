@@ -1,19 +1,17 @@
-package net.springboot.user_management.exception;
+package com.service.department.exception;
 
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -27,14 +25,14 @@ public class GlobalExceptionHandler {
                 LocalDateTime.now(),
                 exception.getMessage(),
                 webRequest.getDescription(false),
-                "USER_NOT_FOUND"
+                "DEPT_NOT_FOUND"
         );
         return new ResponseEntity<>(errorDetails,HttpStatus.NOT_FOUND);
     }
     //Email Already exists exception
-    @ExceptionHandler(EmailAlreadyExistsException.class)
-    public ResponseEntity<ErrorDetails> handleEmailAlreadyExistsException(
-            EmailAlreadyExistsException exception, WebRequest webRequest
+    @ExceptionHandler(DepartmentCodeAlreadyExistsException.class)
+    public ResponseEntity<ErrorDetails> handleDepartmentCodeAlreadyExistsException(
+            DepartmentCodeAlreadyExistsException exception, WebRequest webRequest
     ){
         ErrorDetails errorDetails = new ErrorDetails(
                 LocalDateTime.now(),

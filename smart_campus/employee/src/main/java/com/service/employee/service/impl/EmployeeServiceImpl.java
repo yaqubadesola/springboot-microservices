@@ -5,6 +5,8 @@ import com.service.employee.dto.DepartmentDto;
 import com.service.employee.dto.EmployeeDto;
 import com.service.employee.dto.OrganizationDto;
 import com.service.employee.entity.Employee;
+import com.service.employee.exception.EmployeeAlreadyExistsException;
+import com.service.employee.exception.ResourceNotFoundException;
 import com.service.employee.mapper.EmployeeMapper;
 import com.service.employee.repository.EmployeeRepository;
 //import com.service.employee.service.APIClient;
@@ -33,7 +35,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmployeeDto saveEmployee(EmployeeDto employeeDto) {
+        String email = employeeDto.getEmail();
 
+        //Checking if email already exists
+        if(employeeRepository.existsByEmail(email)){
+            throw new EmployeeAlreadyExistsException(email);
+        }
         Employee employee = EmployeeMapper.mapToEmployee(employeeDto);
 
         Employee saveDEmployee = employeeRepository.save(employee);
@@ -45,7 +52,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmployeeDto getEmployeeById(Long employeeId) {
-         Employee employee = employeeRepository.findById(employeeId).get();
+         Employee employee = employeeRepository.findById(employeeId).
+                 orElseThrow(() -> new ResourceNotFoundException("Emaployee", "employee ID", employeeId));
          EmployeeDto employeeDto = new EmployeeDto(
                  employee.getId(),
                  employee.getFirstName(),

@@ -1,9 +1,9 @@
 package com.service.employee.controller;
 
+import com.service.employee.dto.EmployeeDto;
+import com.service.employee.service.EmployeeService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import net.javaguides.employeeservice.dto.APIResponseDto;
-import net.javaguides.employeeservice.dto.EmployeeDto;
-import net.javaguides.employeeservice.service.EmployeeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,15 +17,15 @@ public class EmployeeController {
 
     // Build Save Employee REST API
     @PostMapping
-    public ResponseEntity<EmployeeDto> saveEmployee(@RequestBody EmployeeDto employeeDto){
+    public ResponseEntity<EmployeeDto> saveEmployee(@Valid @RequestBody EmployeeDto employeeDto){
         EmployeeDto savedEmployee = employeeService.saveEmployee(employeeDto);
         return new ResponseEntity<>(savedEmployee, HttpStatus.CREATED);
     }
 
     // Build Get Employee REST API
     @GetMapping("{id}")
-    public ResponseEntity<APIResponseDto> getEmployee(@PathVariable("id") Long employeeId){
-        APIResponseDto apiResponseDto = employeeService.getEmployeeById(employeeId);
-        return new ResponseEntity<>(apiResponseDto, HttpStatus.OK);
+    public ResponseEntity<EmployeeDto> getEmployee(@PathVariable("id") Long employeeId){
+        EmployeeDto employeeDtoDto = employeeService.getEmployeeById(employeeId);
+        return new ResponseEntity<>(employeeDtoDto, HttpStatus.OK);
     }
 }

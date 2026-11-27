@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Optional;
 //import org.springframework.web.reactive.function.client.WebClient;
@@ -31,8 +32,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private EmployeeRepository employeeRepository;
 
-    private RestTemplate restTemplate;
-//    private WebClient webClient;
+     //private RestTemplate restTemplate;
+    private WebClient webClient;
 //    private APIClient apiClient;
 
     @Override
@@ -57,10 +58,16 @@ public class EmployeeServiceImpl implements EmployeeService {
          Employee employee = employeeRepository.findById(employeeId).
                  orElseThrow(() -> new ResourceNotFoundException("Emaployee", "employee ID", employeeId));
 
-         ResponseEntity<DepartmentDto> responseEntity = restTemplate.getForEntity("http://localhost:8080/api/departments/"+employee.getDepartmentCode(),
-                 DepartmentDto.class);
+//         ResponseEntity<DepartmentDto> responseEntity = restTemplate.getForEntity("http://localhost:8080/api/departments/"+employee.getDepartmentCode(),
+//                 DepartmentDto.class);
+//         DepartmentDto departmentDto = responseEntity.getBody();
 
-         DepartmentDto departmentDto = responseEntity.getBody();
+         DepartmentDto departmentDto = webClient.get()
+                 .uri("http://localhost:8080/api/departments/"+employee.getDepartmentCode())
+                 .retrieve()
+                 .bodyToMono(DepartmentDto.class)
+                 .block();
+
          EmployeeDto employeeDto = new EmployeeDto(
                  employee.getId(),
                  employee.getFirstName(),

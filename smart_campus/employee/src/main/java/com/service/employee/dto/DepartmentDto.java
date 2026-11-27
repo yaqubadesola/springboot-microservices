@@ -15,7 +15,6 @@ public class DepartmentDto {
     private Long id;
     private String departmentName;
     private String departmentDescription;
-
     @NotBlank(message = "Department code is required")
     private String departmentCode;
 }

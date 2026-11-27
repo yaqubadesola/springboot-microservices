@@ -15,7 +15,7 @@ public class EmployeeDto {
     private Long id;
     private String firstName;
     private String lastName;
-
+    private String departmentCode;
     @NotBlank(message = "Email is required")
     @Email(message = "Valid email is required")
     private String email;

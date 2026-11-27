@@ -1,5 +1,6 @@
 package com.service.employee.controller;
 
+import com.service.employee.dto.APIResponseDto;
 import com.service.employee.dto.EmployeeDto;
 import com.service.employee.service.EmployeeService;
 import jakarta.validation.Valid;
@@ -24,8 +25,8 @@ public class EmployeeController {
 
     // Build Get Employee REST API
     @GetMapping("{id}")
-    public ResponseEntity<EmployeeDto> getEmployee(@PathVariable("id") Long employeeId){
-        EmployeeDto employeeDtoDto = employeeService.getEmployeeById(employeeId);
+    public ResponseEntity<APIResponseDto> getEmployee(@PathVariable("id") Long employeeId){
+        APIResponseDto employeeDtoDto = employeeService.getEmployeeById(employeeId);
         return new ResponseEntity<>(employeeDtoDto, HttpStatus.OK);
     }
 }
